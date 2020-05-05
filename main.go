@@ -49,23 +49,20 @@ func main() {
 		return c.JSON(http.StatusOK, article)
 	})
 	e.GET("/articles/:id", func(c echo.Context) error {
-		id := c.Param("id")
-		idParse, _ := strconv.Atoi(id)
+		id, _ := strconv.Atoi(c.Param("id"))
 		article := store.ArticleMap
-		return c.JSON(http.StatusOK, article[idParse])
+		return c.JSON(http.StatusOK, article[id-1])
 	})
 	e.DELETE("/articles/:id", func(c echo.Context) error {
-		id := c.Param("id")
-		idParse, _ := strconv.Atoi(id)
-		article := store.Remove(idParse)
+		id, _ := strconv.Atoi(c.Param("id"))
+		article := store.Remove(id)
 		return c.JSON(http.StatusOK, article)
 	})
 	e.PUT("/articles/:id", func(c echo.Context) error {
 		title := c.FormValue("Title")
 		body := c.FormValue("Body")
-		id := c.Param("id")
-		idParse, _ := strconv.Atoi(id)
-		article := store.EditArticle(title, body, idParse)
+		id, _ := strconv.Atoi(c.Param("id"))
+		article := store.EditArticle(title, body, id)
 		return c.JSON(http.StatusOK, article)
 	})
 
