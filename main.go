@@ -9,31 +9,6 @@ import (
 )
 
 func main() {
-	// e := echo.New()
-	// e.GET("/", func(c echo.Context) error {
-	// 	user := c.QueryParam("user") // bisa juga menggunakan FormValue namun form value digunakan untuk put patch dan post
-	// 	age := c.QueryParam("age")
-	// 	return c.String(http.StatusOK, user+","+age)
-	// })
-	// e.Logger.Fatal(e.Start(":8080"))
-
-	// e := echo.New()
-	// e.GET("articles", func(c echo.Context) error {
-	// 	return c.String(http.StatusOK, "Get List")
-	// })
-	// e.POST("articles", func(c echo.Context) error {
-	// 	return c.String(http.StatusOK, "Create List")
-	// })
-	// e.PUT("articles/:id", func(c echo.Context) error {
-	// 	return c.String(http.StatusOK, "Update List")
-	// })
-	// e.DELETE("articles/:id", func(c echo.Context) error {
-	// 	return c.String(http.StatusOK, "Delete List")
-	// })
-	// e.GET("articles/:id", func(c echo.Context) error {
-	// 	return c.String(http.StatusOK, "Get List by id")
-	// })
-
 	store := model.NewArticleStoreInMemory()
 	e := echo.New()
 
